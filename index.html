@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para El Amor De Mi Vida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            /* Fondo premium estilo espejo de satén rosa/champán */
+            background: linear-gradient(135deg, #fbc5d8 0%, #fbe3e6 50%, #eac2cb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* --- PANTALLA DE ENTRADA (BIENVENIDA) --- */
+        #pantalla-bienvenida {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fbc5d8 0%, #fbe3e6 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #pantalla-bienvenida h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #800020;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+        }
+
+        #pantalla-bienvenida p {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Botón de Entrada de Alta Gama */
+        .boton-entrar {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #fff;
+            /* Degradado de oro metálico */
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(170, 119, 28, 0.4);
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: latido_boton 1.8s infinite;
+        }
+
+        .boton-entrar:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 10px rgba(170, 119, 28, 0.3);
+        }
+
+        /* --- CONTENIDO PRINCIPAL (OCULTO AL INICIO) --- */
+        #contenido-principal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Foto limpia y directa sin marcos circulares para asegurar que se vea */
+        .foto-principal {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            display: block;
+        }
+
+        /* Pergamino de Lujo con Efecto Cristal de Seda (Glassmorphism) */
+        .pergamino-carta {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 40px 25px;
+            border: 3px double rgba(191, 149, 63, 0.5); /* Fino borde doble dorado */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #800020; /* Rojo Borgoña */
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .texto-carta {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c2c2c;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .firma-final {
+            font-family: 'Dancing Script', cursive;
+            color: #800020;
+            font-size: 1.9rem;
+            text-align: right;
+            margin-top: 30px;
+            font-weight: bold;
+            border-top: 1px dashed rgba(191, 149, 63, 0.3);
+            padding-top: 15px;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes latido_boton {
+            0% { transform: scale(1); box-shadow: 0 10px 25px rgba(170, 119, 28, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 35px rgba(170, 119, 28, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 10px 25px rgba(170, 119, 28, 0.4); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pantalla-bienvenida">
+        <h2>Para Ana</h2>
+        <p>Un mensaje desde el corazón</p>
+        <button class="boton-entrar" onclick="abrirCarta()">TOCAR PARA ENTRAR ❤️</button>
+    </div>
+
+    <div id="contenido-principal">
+        
+        <img src="1003086053.jpg" alt="Ana y Milagros" class="foto-principal">
+
+        <div class="pergamino-carta">
+            <h1>Eres El Amor De Mi Vida</h1>
+            
+            <div class="texto-carta">
+                <p>
+                    Nunca me he rendido contigo porque te amo con cada latido de mi corazón se que tienes mucho miedo pero en realidad yo no soy mala, solo tenía miedo de ser lastimada mientras ambas seamos sinceras y transparentes la relación puede ser mejor que nunca si gustas comencemos desde cero yo estoy dispuesta a ser más puntual y que hagamos cosas distintas a tener más tiempo juntas hablar para darnos amor yo te deseo demasiado y tengo unas ganas locas de acariciarte de besar cada parte de tu hermoso cuerpo por ti estoy dispuesta a lo que sea y si si soy Intensa pero es porque tu vales la pena.
+                </p>
+            </div>
+
+            <div class="firma-final">Milagros</div>
+        </div>
+        
+    </div>
+
+    <script>
+        function abrirCarta() {
+            var bienvenida = document.getElementById("pantalla-bienvenida");
+            var contenido = document.getElementById("contenido-principal");
+
+            // Desvanecer la pantalla de entrada
+            bienvenida.style.opacity = "0";
+            bienvenida.style.transform = "scale(0.95)";
+            
+            // Eliminarla por completo tras la animación para que deje interactuar
+            setTimeout(function() {
+                bienvenida.style.display = "none";
+                
+                // Mostrar la carta de lujo con un efecto elegante hacia arriba
+                contenido.style.opacity = "1";
+                contenido.style.transform = "translateY(0)";
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
